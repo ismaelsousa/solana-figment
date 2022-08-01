@@ -10,8 +10,10 @@ export default function keypair(
   res: NextApiResponse<string | ResponseT>,
 ) {
   try {
-    const keypair = undefined;
-    const address = undefined;
+    const keypair = Keypair.generate();
+    console.log('🚀 ~ file: keypair.ts ~ line 14 ~ keypair', keypair);
+
+    const address = keypair.publicKey.toString();
     const secret = JSON.stringify(Array.from(keypair.secretKey));
     res.status(200).json({
       secret,
